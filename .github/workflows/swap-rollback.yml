@@ -19,8 +19,8 @@ jobs:
 
       - name: Revert Slot Swap (Staging -> Production)
         run: |
-          az webapp deployment slot swap \
-            --resource-group rg-myapp-prd \
-            --name myappkala \
-            --slot staging \
+          az webapp deployment slot swap
+            --resource-group rg-myapp-prd
+            --name myappkala
+            --slot staging
             --target-slot production
