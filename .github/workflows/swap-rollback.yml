@@ -1,0 +1,29 @@
+name: Revert Slot Swap (Staging -> Production)
+
+on:
+  workflow_dispatch: # Allows you to run it manually from the GitHub UI
+
+jobs:
+  build:
+    runs-on: windows-latest
+    permissions:
+      id-token: write #This is required for requesting the JWT
+
+    steps:
+      - name: Login to Azure
+        uses: azure/login@v2
+        with:
+          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_92CCFB243762432B982ACF52569ABFF0 }}
+          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_23FDAA897DD14958B942ED366CF685C9 }}
+          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_5732C6EF7A9442ADB8E9DCD2C3C9E423 }}
+
+      - name: Swap slots
+        uses: azure/CLI@v2
+        with:
+          inlineScript: |
+            az webapp deployment slot swap \
+              --resource-group rg-myapp-prd \
+              --name myappkala \
+              --slot staging \
+              --target-slot production
+
