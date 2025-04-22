@@ -19,8 +19,11 @@ jobs:
 
       - name: Swap slots
         uses: azure/CLI@v2
-          az webapp deployment slot swap \
-            --resource-group rg-myapp-prd \
-            --name myappkala \
-            --slot staging \
-            --target-slot production
+        with:
+          inlineScript: |
+            az webapp deployment slot swap \
+              --resource-group rg-myapp-prd \
+              --name myappkala \
+              --slot staging \
+              --target-slot production
+
