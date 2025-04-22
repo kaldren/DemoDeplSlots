@@ -17,10 +17,10 @@ jobs:
           tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_23FDAA897DD14958B942ED366CF685C9 }}
           subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_5732C6EF7A9442ADB8E9DCD2C3C9E423 }}
 
-      - name: Revert Slot Swap (Staging -> Production)
-        run: |
-          az webapp deployment slot swap
-            --resource-group rg-myapp-prd
-            --name myappkala
-            --slot staging
+      - name: Swap slots
+        uses: azure/CLI@v2
+          az webapp deployment slot swap \
+            --resource-group rg-myapp-prd \
+            --name myappkala \
+            --slot staging \
             --target-slot production
