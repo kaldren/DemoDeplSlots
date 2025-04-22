@@ -10,7 +10,7 @@ app.UseHttpsRedirection();
 
 var summaries = new[]
 {
-    "YABA", "DABA", "DUBI", "DUDI", "MUDI", "WUDI", "BUDI", "HUDI", "SWUDI", "SCHUDI"
+    "XXX", "XXX", "XXX", "XXX", "XXX", "XXX", "XXX", "XXX", "XXX", "XXX"
 };
 
 app.MapGet("/weatherforecast", () =>
